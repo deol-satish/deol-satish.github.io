@@ -63,7 +63,7 @@ export default function Navbar() {
     <header className="relative z-50 flex justify-center px-4 pt-4">
       <div className="theme-nav-bar w-full max-w-5xl overflow-visible rounded-2xl border-2 shadow-md backdrop-blur-sm dark:shadow-lg dark:shadow-black/20">
         <nav
-          className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6"
+          className="relative flex items-center justify-between gap-4 px-4 py-3 sm:px-6"
           aria-label="Main navigation"
         >
           <div className="flex items-center gap-2">
@@ -107,15 +107,34 @@ export default function Navbar() {
                 </button>
               </li>
             </ul>
-            {settingsOpen && (
-              <div
-                ref={panelRef}
-                role="dialog"
-                aria-label={SETTINGS_LABEL}
-                className="absolute right-0 top-full z-[100] mt-2 w-[min(calc(100vw-2rem),20rem)] rounded-xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-600 dark:bg-zinc-800"
-              >
-                    <div className="max-h-[min(60vh,24rem)] overflow-y-auto py-2 pt-2">
-                      <section className="px-4 py-2">
+
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              className="theme-nav-link inline-flex size-9 items-center justify-center rounded-lg md:hidden"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            >
+              <svg className="size-6" fill="none" strokeWidth={1.5} stroke="currentColor" viewBox="0 0 24 24">
+                {mobileOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {settingsOpen && (
+            <div
+              ref={panelRef}
+              role="dialog"
+              aria-label={SETTINGS_LABEL}
+              className="absolute right-0 top-full z-[100] mt-2 w-[min(calc(100vw-2rem),20rem)] rounded-xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-600 dark:bg-zinc-800"
+            >
+              <div className="max-h-[min(60vh,24rem)] overflow-y-auto py-2 pt-2">
+                <section className="px-4 py-2">
                         <div className="mb-2 flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
                           <svg className="size-4 shrink-0" fill="none" strokeWidth={2} stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l4.598-4.598M4.098 19.902A3.75 3.75 0 0 1 12 16.5m8.25-4.5a3.75 3.75 0 0 1-3.75 3.75H15a.75.75 0 0 1-.53-.22l-4.598-4.598a3.75 3.75 0 0 1 0-5.304 3.75 3.75 0 0 1 5.304 0L15 7.94m-3-3 2.25 2.25m-7.5 0 7.5 7.5" />
@@ -169,27 +188,9 @@ export default function Navbar() {
                           ))}
                         </div>
                       </section>
-                    </div>
-                  </div>
-                )}
-
-            <button
-              type="button"
-              onClick={() => setMobileOpen((o) => !o)}
-              className="theme-nav-link inline-flex size-9 items-center justify-center rounded-lg md:hidden"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              <svg className="size-6" fill="none" strokeWidth={1.5} stroke="currentColor" viewBox="0 0 24 24">
-                {mobileOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                )}
-              </svg>
-            </button>
-          </div>
+              </div>
+            </div>
+          )}
         </nav>
 
         <div
