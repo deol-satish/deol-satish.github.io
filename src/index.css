@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Theme: light (zinc) */
+[data-theme="light"] {
+  --app-bg: #fafafa;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-border: #a1a1aa;
+  --nav-active-bg: #d4d4d8;
+  --nav-text: #18181b;
+  --nav-text-muted: #52525b;
+  --nav-hover-bg: #f4f4f5;
+}
+
+/* Theme: dark (zinc) */
+[data-theme="dark"] {
+  --app-bg: #09090b;
+  --nav-bg: rgba(24, 24, 27, 0.9);
+  --nav-border: #52525b;
+  --nav-active-bg: #52525b;
+  --nav-text: #fafafa;
+  --nav-text-muted: #a1a1aa;
+  --nav-hover-bg: rgba(39, 39, 42, 0.8);
+}
+
+/* Theme: red */
+[data-theme="red"] {
+  --app-bg: #fef2f2;
+  --nav-bg: rgba(254, 226, 226, 0.95);
+  --nav-border: #f87171;
+  --nav-active-bg: #fca5a5;
+  --nav-text: #450a0a;
+  --nav-text-muted: #991b1b;
+  --nav-hover-bg: rgba(254, 202, 202, 0.8);
+}
+
+/* Theme: blue */
+[data-theme="blue"] {
+  --app-bg: #eff6ff;
+  --nav-bg: rgba(219, 234, 254, 0.95);
+  --nav-border: #60a5fa;
+  --nav-active-bg: #93c5fd;
+  --nav-text: #172554;
+  --nav-text-muted: #1d4ed8;
+  --nav-hover-bg: rgba(191, 219, 254, 0.8);
+}
+
+/* Theme: green */
+[data-theme="green"] {
+  --app-bg: #f0fdf4;
+  --nav-bg: rgba(220, 252, 231, 0.95);
+  --nav-border: #4ade80;
+  --nav-active-bg: #86efac;
+  --nav-text: #14532d;
+  --nav-text-muted: #166534;
+  --nav-hover-bg: rgba(187, 247, 208, 0.8);
+}
+
+/* Theme: yellow */
+[data-theme="yellow"] {
+  --app-bg: #fefce8;
+  --nav-bg: rgba(254, 249, 195, 0.95);
+  --nav-border: #eab308;
+  --nav-active-bg: #fde047;
+  --nav-text: #422006;
+  --nav-text-muted: #713f12;
+  --nav-hover-bg: rgba(254, 240, 138, 0.8);
+}
+
+/* App wrapper: use theme background */
+.theme-app-bg {
+  background-color: var(--app-bg);
+}
+
+/* Navbar bar and links (theme-aware) */
+.theme-nav-bar {
+  background: var(--nav-bg);
+  border-color: var(--nav-border);
+}
+
+.theme-nav-link {
+  color: var(--nav-text-muted);
+}
+
+.theme-nav-link:hover {
+  background: var(--nav-hover-bg);
+  color: var(--nav-text);
+}
+
+.theme-nav-link.active {
+  background: var(--nav-active-bg);
+  color: var(--nav-text);
+}
+
+/* Texture overlays (subtle, on top of theme bg) */
+.texture-none {
+  background-image: none;
+}
+
+.texture-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 2px, transparent 2px);
+  background-size: 28px 28px;
+}
+
+[data-theme="dark"] .texture-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 2px, transparent 2px);
+}
+
+.texture-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+[data-theme="dark"] .texture-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Stars: repeating pattern of star symbols scattered across the background */
+.texture-spaceships {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23000' opacity='0.07'%3E%3Cpath d='M60 8 L63 22 L78 22 L66 32 L70 46 L60 38 L50 46 L54 32 L42 22 L57 22 Z'/%3E%3Cpath d='M18 50 L20 56 L26 56 L21 60 L23 66 L18 62 L13 66 L15 60 L10 56 L16 56 Z'/%3E%3Cpath d='M95 55 L97 61 L103 61 L98 65 L100 71 L95 67 L90 71 L92 65 L87 61 L93 61 Z'/%3E%3Cpath d='M55 95 L57 101 L63 101 L58 105 L60 111 L55 107 L50 111 L52 105 L47 101 L53 101 Z'/%3E%3Cpath d='M8 18 L9 21 L12 21 L10 23 L11 26 L8 24 L5 26 L6 23 L4 21 L7 21 Z'/%3E%3Cpath d='M108 88 L109 91 L112 91 L110 93 L111 96 L108 94 L105 96 L106 93 L104 91 L107 91 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+[data-theme="dark"] .texture-spaceships {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23fff' opacity='0.09'%3E%3Cpath d='M60 8 L63 22 L78 22 L66 32 L70 46 L60 38 L50 46 L54 32 L42 22 L57 22 Z'/%3E%3Cpath d='M18 50 L20 56 L26 56 L21 60 L23 66 L18 62 L13 66 L15 60 L10 56 L16 56 Z'/%3E%3Cpath d='M95 55 L97 61 L103 61 L98 65 L100 71 L95 67 L90 71 L92 65 L87 61 L93 61 Z'/%3E%3Cpath d='M55 95 L57 101 L63 101 L58 105 L60 111 L55 107 L50 111 L52 105 L47 101 L53 101 Z'/%3E%3Cpath d='M8 18 L9 21 L12 21 L10 23 L11 26 L8 24 L5 26 L6 23 L4 21 L7 21 Z'/%3E%3Cpath d='M108 88 L109 91 L112 91 L110 93 L111 96 L108 94 L105 96 L106 93 L104 91 L107 91 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.notes-preview h1 { font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem; margin-bottom: 0.5rem; }
+.notes-preview h2 { font-size: 1.25rem; font-weight: 600; margin-top: 0.75rem; margin-bottom: 0.5rem; }
+.notes-preview h3 { font-size: 1.125rem; font-weight: 600; margin-top: 0.5rem; margin-bottom: 0.25rem; }
+.notes-preview p { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+.notes-preview ul { list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0; }
+.notes-preview ol { list-style-type: decimal; padding-left: 1.5rem; margin: 0.5rem 0; }
+.notes-preview li { margin: 0.25rem 0; }
+.notes-preview code { font-family: ui-monospace, monospace; font-size: 0.875em; background: rgba(0,0,0,0.06); padding: 0.125rem 0.375rem; border-radius: 0.25rem; }
+.dark .notes-preview code { background: rgba(255,255,255,0.1); }
+.notes-preview pre { margin: 0.5rem 0; padding: 0.75rem 1rem; background: rgba(0,0,0,0.05); border-radius: 0.5rem; overflow-x: auto; }
+.dark .notes-preview pre { background: rgba(255,255,255,0.08); }
+.notes-preview pre code { background: none; padding: 0; }
+.notes-preview a { color: #2563eb; text-decoration: underline; }
+.dark .notes-preview a { color: #60a5fa; }
+.notes-preview blockquote { border-left: 4px solid #d4d4d8; padding-left: 1rem; margin: 0.5rem 0; color: #71717a; }
+.dark .notes-preview blockquote { border-color: #52525b; color: #a1a1aa; }

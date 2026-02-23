@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var theme = localStorage.getItem('deol-color-theme');
+        var allowed = ['light','dark','red','blue','green','yellow'];
+        if (!theme || allowed.indexOf(theme) === -1) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        var texture = localStorage.getItem('deol-texture');
+        var textures = ['none','dots','grid','spaceships'];
+        if (!texture || textures.indexOf(texture) === -1) texture = 'none';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-texture', texture);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
+    <link rel="icon" type="image/png" href="/mainicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deol Satish</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
