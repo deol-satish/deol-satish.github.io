@@ -1,3 +1,6 @@
+import { Card, CardContent } from '@/components/ui/card';
+import { Github, ExternalLink, FolderGit2 } from 'lucide-react';
+
 type ProjectLink = { url: string; label: string };
 
 const projects: { title: string; description: string; links: ProjectLink[] }[] = [
@@ -13,11 +16,15 @@ const projects: { title: string; description: string; links: ProjectLink[] }[] =
       'Led the scrum-based development of a web application for an IoT product that monitors babies and sends critical information through IFTTT triggers and Emergency Email Notifications. Used Express.js for web servers and REST APIs, Passport.js for authentication, AngularJS for front-end with Karma & Jasmine unit testing and Protractor for E2E testing. Enhanced UI/UX with Bootstrap and Semantic UI.',
     links: [
       { url: 'https://github.com/ajalaba/Baby-Monitoring-System', label: 'Code' },
-      { url: 'https://github.com/ajalaba/Baby-Monitoring-System/blob/master/web/screenshots/chrome-Protractor%20Baby%20Monitoring%20System%20register%20device%20App%20testing%20redirect%20to%20register-device%20page%20error%20free%20.png', label: 'Screenshot' },
+      {
+        url: 'https://github.com/ajalaba/Baby-Monitoring-System/blob/master/web/screenshots/chrome-Protractor%20Baby%20Monitoring%20System%20register%20device%20App%20testing%20redirect%20to%20register-device%20page%20error%20free%20.png',
+        label: 'Screenshot',
+      },
     ],
   },
   {
-    title: 'Active Queue Management in L4S with Asynchronous Advantage Actor-Critic: A FreeBSD Networking Stack Perspective',
+    title:
+      'Active Queue Management in L4S with Asynchronous Advantage Actor-Critic: A FreeBSD Networking Stack Perspective',
     description:
       'Research on active queue management in Low Latency, Low Loss, Scalable throughput (L4S) using Asynchronous Advantage Actor-Critic (A3C) from a FreeBSD networking stack perspective. Implemented A3C to refine buffer management in the FreeBSD kernel. Published in Future Internet (MDPI, 2024). Authors: Deol Satish, Jonathan Kua, Shiva Raj Pokhrel.',
     links: [
@@ -72,54 +79,49 @@ function isGitHubLink(href: string): boolean {
   }
 }
 
-export default function Projects() {
+export default function ProjectsPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
-      <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
-        Projects
-      </h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-        Software projects and research work.
-      </p>
-      <ul className="mt-6 space-y-6">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
+      <div className="flex items-center gap-3">
+        <FolderGit2 className="size-6 text-muted-foreground" />
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <span className="gradient-text">Projects</span>
+        </h1>
+      </div>
+      <p className="mt-2 text-muted-foreground">Software projects and research work.</p>
+
+      <ul className="mt-8 space-y-5">
         {projects.map((p) => (
-          <li
-            key={p.title}
-            className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 px-4 py-4"
-          >
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">
-              {p.title}
-            </h2>
-            <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
-              {p.description}
-            </p>
-            {p.links.length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-4">
-                {p.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 underline dark:text-blue-400 hover:no-underline"
-                  >
-                    {isGitHubLink(link.url) ? (
-                      <svg className="size-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                      </svg>
-                    ) : (
-                      <svg className="size-4 shrink-0" fill="none" strokeWidth={1.5} stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                      </svg>
-                    )}
-                    {link.label} →
-                  </a>
-                ))}
-              </div>
-            )}
+          <li key={p.title}>
+            <Card>
+              <CardContent className="p-5">
+                <h2 className="text-lg font-semibold">{p.title}</h2>
+                <p className="mt-2 text-sm text-foreground/85">{p.description}</p>
+                {p.links.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-4">
+                    {p.links.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-500 underline-offset-4 hover:underline dark:text-blue-400"
+                      >
+                        {isGitHubLink(link.url) ? (
+                          <Github className="size-4 shrink-0" />
+                        ) : (
+                          <ExternalLink className="size-4 shrink-0" />
+                        )}
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

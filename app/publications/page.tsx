@@ -1,3 +1,6 @@
+import { Card, CardContent } from '@/components/ui/card';
+import { BookOpen, ExternalLink } from 'lucide-react';
+
 const publications = [
   {
     citation:
@@ -49,43 +52,45 @@ const publications = [
   },
 ];
 
-export default function Publications() {
+export default function PublicationsPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
-      <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
-        Publications
-      </h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-        Research papers and journal articles.
-      </p>
-      <ul className="mt-6 space-y-8">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
+      <div className="flex items-center gap-3">
+        <BookOpen className="size-6 text-muted-foreground" />
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <span className="gradient-text">Publications</span>
+        </h1>
+      </div>
+      <p className="mt-2 text-muted-foreground">Research papers and journal articles.</p>
+
+      <ul className="mt-8 space-y-5">
         {publications.map((pub, i) => (
-          <li
-            key={i}
-            className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 px-4 py-4"
-          >
-            <p className="text-sm font-medium text-zinc-900 dark:text-white">
-              {pub.citation}
-            </p>
-            {pub.abstract && (
-              <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">
-                <span className="font-semibold text-zinc-800 dark:text-zinc-200">Abstract: </span>
-                {pub.abstract}
-              </p>
-            )}
-            {pub.link && pub.linkLabel && (
-              <a
-                href={pub.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-medium text-blue-600 underline dark:text-blue-400 hover:no-underline"
-              >
-                {pub.linkLabel} / View paper →
-              </a>
-            )}
+          <li key={i}>
+            <Card>
+              <CardContent className="p-5">
+                <p className="text-sm font-medium">{pub.citation}</p>
+                {pub.abstract && (
+                  <p className="mt-3 text-sm text-foreground/85">
+                    <span className="font-semibold">Abstract: </span>
+                    {pub.abstract}
+                  </p>
+                )}
+                {pub.link && (
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-blue-500 underline-offset-4 hover:underline dark:text-blue-400"
+                  >
+                    <ExternalLink className="size-4" />
+                    {pub.linkLabel} / View paper →
+                  </a>
+                )}
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

@@ -1,3 +1,7 @@
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Briefcase } from 'lucide-react';
+
 const experiences: {
   role: string;
   company: string;
@@ -66,41 +70,40 @@ const experiences: {
   },
 ];
 
-export default function Experience() {
+export default function ExperiencePage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
-      <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
-        Work Experience
-      </h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-        Professional roles and key contributions.
-      </p>
-      <ul className="mt-6 space-y-8">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
+      <div className="flex items-center gap-3">
+        <Briefcase className="size-6 text-muted-foreground" />
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <span className="gradient-text">Work Experience</span>
+        </h1>
+      </div>
+      <p className="mt-2 text-muted-foreground">Professional roles and key contributions.</p>
+
+      <ol className="mt-8 space-y-6">
         {experiences.map((exp) => (
-          <li
-            key={`${exp.role}-${exp.company}-${exp.period}`}
-            className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 px-4 py-4"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">
-                {exp.role}
-              </h2>
-              <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                {exp.period}
-              </span>
-            </div>
-            <p className="mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-              {exp.company}
-              <span className="text-zinc-500 dark:text-zinc-500"> · {exp.location}</span>
-            </p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-              {exp.bullets.map((bullet, i) => (
-                <li key={i}>{bullet}</li>
-              ))}
-            </ul>
+          <li key={`${exp.role}-${exp.company}-${exp.period}`}>
+            <Card>
+              <CardContent className="p-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h2 className="text-lg font-semibold">{exp.role}</h2>
+                  <Badge variant="outline">{exp.period}</Badge>
+                </div>
+                <p className="mt-1 text-sm font-medium">
+                  {exp.company}
+                  <span className="text-muted-foreground"> · {exp.location}</span>
+                </p>
+                <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-foreground/90">
+                  {exp.bullets.map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </li>
         ))}
-      </ul>
-    </main>
+      </ol>
+    </div>
   );
 }
