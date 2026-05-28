@@ -1,7 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import type { ColorTheme, TextureTheme } from '../contexts/ThemeContext';
+import { RESTRICTED_BG_IMAGES } from '../contexts/ThemeContext';
+import type { ColorTheme, TextureTheme, BackgroundImage } from '../contexts/ThemeContext';
+import forestMistyThumb from '../assets/backgrounds/forest-misty.jpg';
+import forestRoadThumb from '../assets/backgrounds/forest-road.jpg';
+import forestSunriseThumb from '../assets/backgrounds/forest-sunrise.jpg';
+import forestLightThumb from '../assets/backgrounds/forest-light.jpg';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -20,6 +25,7 @@ const colorThemes: { id: ColorTheme; label: string; bg: string }[] = [
   { id: 'blue', label: 'Blue', bg: '#eff6ff' },
   { id: 'green', label: 'Green', bg: '#f0fdf4' },
   { id: 'yellow', label: 'Yellow', bg: '#fefce8' },
+  { id: 'forest', label: 'Forest', bg: '#2a1a10' },
 ];
 
 const textureOptions: { id: TextureTheme; label: string }[] = [
@@ -27,6 +33,14 @@ const textureOptions: { id: TextureTheme; label: string }[] = [
   { id: 'dots', label: 'Dots' },
   { id: 'grid', label: 'Grid' },
   { id: 'spaceships', label: 'Stars' },
+];
+
+const backgroundImages: { id: BackgroundImage; label: string; thumb?: string }[] = [
+  { id: 'none', label: 'None' },
+  { id: 'forest-misty', label: 'Misty Pines', thumb: forestMistyThumb },
+  { id: 'forest-road', label: 'Sunbeam Road', thumb: forestRoadThumb },
+  { id: 'forest-sunrise', label: 'Sunrise Pines', thumb: forestSunriseThumb },
+  { id: 'forest-light', label: 'Bright Forest', thumb: forestLightThumb },
 ];
 
 export default function Navbar() {
@@ -37,12 +51,26 @@ export default function Navbar() {
   const {
     colorTheme,
     texture,
+    backgroundImage,
     setColorTheme,
     setTexture,
+    setBackgroundImage,
     settingsOpen,
     closeSettings,
     toggleSettings,
   } = useTheme();
+
+  const restrictedBg = (RESTRICTED_BG_IMAGES as BackgroundImage[]).includes(backgroundImage);
+  const availableColorThemes = restrictedBg
+    ? colorThemes.filter((t) => t.id === 'dark' || t.id === 'forest')
+    : colorThemes;
+
+  // If user picks a dark-only background while on an incompatible theme, auto-switch to Forest
+  useEffect(() => {
+    if (restrictedBg && colorTheme !== 'dark' && colorTheme !== 'forest') {
+      setColorTheme('forest');
+    }
+  }, [restrictedBg, colorTheme, setColorTheme]);
 
   useEffect(() => {
     if (!settingsOpen) return;
@@ -142,7 +170,7 @@ export default function Navbar() {
                           <span className="text-xs font-medium uppercase tracking-wide">Appearance</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {colorThemes.map((t) => (
+                          {availableColorThemes.map((t) => (
                             <button
                               key={t.id}
                               type="button"
@@ -162,6 +190,11 @@ export default function Navbar() {
                             </button>
                           ))}
                         </div>
+                        {restrictedBg && (
+                          <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+                            Only Dark &amp; Forest are available while this dark forest background is active.
+                          </p>
+                        )}
                       </section>
 
                       <section className="border-t border-zinc-100 px-4 py-2 dark:border-zinc-700">
@@ -184,6 +217,45 @@ export default function Navbar() {
                               }`}
                             >
                               {t.label}
+                            </button>
+                          ))}
+                        </div>
+                      </section>
+
+                      <section className="border-t border-zinc-100 px-4 py-2 dark:border-zinc-700">
+                        <div className="mb-2 flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+                          <svg className="size-4 shrink-0" fill="none" strokeWidth={2} stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                          </svg>
+                          <span className="text-xs font-medium uppercase tracking-wide">Background</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          {backgroundImages.map((b) => (
+                            <button
+                              key={b.id}
+                              type="button"
+                              onClick={() => setBackgroundImage(b.id)}
+                              className={`group relative flex h-16 items-end overflow-hidden rounded-lg border text-left transition-colors ${
+                                backgroundImage === b.id
+                                  ? 'border-zinc-900 ring-2 ring-zinc-900 dark:border-zinc-300 dark:ring-zinc-300'
+                                  : 'border-zinc-200 hover:border-zinc-400 dark:border-zinc-600 dark:hover:border-zinc-400'
+                              }`}
+                              title={b.label}
+                            >
+                              {b.thumb ? (
+                                <img
+                                  src={b.thumb}
+                                  alt=""
+                                  loading="lazy"
+                                  className="absolute inset-0 h-full w-full object-cover"
+                                />
+                              ) : (
+                                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800" />
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                              <span className="relative z-10 px-2 py-1 text-xs font-semibold text-white drop-shadow">
+                                {b.label}
+                              </span>
                             </button>
                           ))}
                         </div>

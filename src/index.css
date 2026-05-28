@@ -77,6 +77,17 @@
   --nav-hover-bg: rgba(254, 240, 138, 0.8);
 }
 
+/* Theme: forest (dark brown / earthy) */
+[data-theme="forest"] {
+  --app-bg: #1a110a;
+  --nav-bg: rgba(35, 22, 14, 0.7);
+  --nav-border: #5b3a22;
+  --nav-active-bg: rgba(94, 60, 36, 0.85);
+  --nav-text: #f3e7d3;
+  --nav-text-muted: #c9a87a;
+  --nav-hover-bg: rgba(58, 36, 22, 0.7);
+}
+
 /* App wrapper: use theme background */
 .theme-app-bg {
   background-color: var(--app-bg);
@@ -133,6 +144,52 @@
 .texture-spaceships {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23000' opacity='0.07'%3E%3Cpath d='M60 8 L63 22 L78 22 L66 32 L70 46 L60 38 L50 46 L54 32 L42 22 L57 22 Z'/%3E%3Cpath d='M18 50 L20 56 L26 56 L21 60 L23 66 L18 62 L13 66 L15 60 L10 56 L16 56 Z'/%3E%3Cpath d='M95 55 L97 61 L103 61 L98 65 L100 71 L95 67 L90 71 L92 65 L87 61 L93 61 Z'/%3E%3Cpath d='M55 95 L57 101 L63 101 L58 105 L60 111 L55 107 L50 111 L52 105 L47 101 L53 101 Z'/%3E%3Cpath d='M8 18 L9 21 L12 21 L10 23 L11 26 L8 24 L5 26 L6 23 L4 21 L7 21 Z'/%3E%3Cpath d='M108 88 L109 91 L112 91 L110 93 L111 96 L108 94 L105 96 L106 93 L104 91 L107 91 Z'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 120px 120px;
+}
+
+/* Forest background: dark-brown gradient sky + layered tree silhouettes */
+.forest-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #1a110a;
+  background-image:
+    /* warm campfire-like glow near bottom */
+    radial-gradient(ellipse 70% 45% at 50% 95%, rgba(190, 95, 35, 0.22), transparent 70%),
+    /* soft moon/canopy light near top */
+    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(120, 80, 45, 0.35), transparent 70%),
+    /* deep brown sky gradient */
+    linear-gradient(to bottom, #2a1a10 0%, #1a110a 55%, #0d0805 100%);
+}
+
+.forest-background::before {
+  /* Misty fog layer */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 25% at 30% 70%, rgba(160, 110, 70, 0.12), transparent 65%),
+    radial-gradient(ellipse 50% 25% at 75% 75%, rgba(140, 90, 55, 0.10), transparent 70%);
+  filter: blur(2px);
+}
+
+.forest-background::after {
+  /* Layered tree silhouettes painted at bottom of screen */
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 75vh;
+  background-repeat: repeat-x, repeat-x, repeat-x;
+  background-position: bottom -1px center, bottom -1px center, bottom -1px center;
+  background-size: 1400px 70vh, 1200px 55vh, 1000px 40vh;
+  background-image:
+    /* Foreground - darkest, biggest trees */
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700' preserveAspectRatio='none'%3E%3Cg fill='%230a0604'%3E%3Cpolygon points='0,700 0,400 50,250 90,330 140,180 180,300 230,140 290,290 350,200 400,90 460,260 520,180 570,300 630,170 690,280 750,120 820,260 880,200 940,80 1000,250 1060,170 1120,300 1180,210 1240,140 1300,280 1360,200 1400,330 1400,700'/%3E%3C/g%3E%3C/svg%3E"),
+    /* Mid layer */
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cg fill='%23170d07' opacity='0.95'%3E%3Cpolygon points='0,600 0,380 40,300 90,360 150,260 200,340 260,240 320,330 380,250 440,180 500,310 560,240 620,320 680,200 740,300 800,260 860,180 920,320 980,250 1040,330 1100,260 1160,340 1200,290 1200,600'/%3E%3C/g%3E%3C/svg%3E"),
+    /* Far layer - lightest, hazy */
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 400' preserveAspectRatio='none'%3E%3Cg fill='%23271810' opacity='0.85'%3E%3Cpolygon points='0,400 0,260 50,210 110,260 170,200 230,260 290,210 350,260 410,200 470,260 530,210 590,260 650,200 710,260 770,210 830,260 890,200 950,260 1000,220 1000,400'/%3E%3C/g%3E%3C/svg%3E");
+  filter: drop-shadow(0 -10px 30px rgba(150, 85, 40, 0.12));
 }
 
 [data-theme="dark"] .texture-spaceships {

@@ -7,10 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Vite build output
 dist
 dist-ssr
 *.local
+
+# Next.js build output (from NextJS-Version branch builds run in this workspace)
+.next/
+out/
+next-env.d.ts
+.vercel
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
