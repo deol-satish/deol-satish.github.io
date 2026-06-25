@@ -1,35 +1,19 @@
 const publications = [
   {
     citation:
-      'Hendy N, Al-Hourani A, Pokhrel SR, Satish D, Sithamparanathan K, Kua J. Enabling coexistence: Dynamic channel allocation for scalable LEO-GEO networks. In: 2025 IEEE International Conference on Communication, Networks and Satellite (COMNETSAT). 2025:144–150. IEEE.',
-    link: 'https://ieeexplore.ieee.org/document/11325050',
-    linkLabel: 'IEEE Xplore',
-    abstract:
-      'Addresses dynamic channel allocation to enable coexistence between Low Earth Orbit (LEO) and Geostationary (GEO) satellite networks, supporting scalable and efficient use of spectrum.',
-  },
-  {
-    citation:
-      'Pokhrel SR, Satish D, Kua J, Walid A. Distilling large language models for network active queue management. arXiv preprint. 2025; arXiv:2501.16734.',
-    link: 'https://arxiv.org/abs/2501.16734',
-    linkLabel: 'arXiv',
+      'Pokhrel SR, Satish D, Kua J, Walid A. Distilling large language models for network active queue management. IEEE Transactions on Networking. 2026;34:5501–5513. doi:10.1109/TON.2026.3690076.',
+    link: 'https://doi.org/10.1109/TON.2026.3690076',
+    linkLabel: 'DOI',
     abstract:
       'Explores distilling Large Language Models for network Active Queue Management (AQM), extending the L4S-LLM research direction toward efficient deployment of ML-based congestion control.',
   },
   {
     citation:
-      'Pokhrel SR, Kua J, Satish D, Williams P, Zaslavsky A, Loke SW, Choi J. On correlated knowledge distillation for monitoring human pose with radios. arXiv e-prints. 2023; arXiv:2305.14829.',
-    link: 'https://arxiv.org/abs/2305.14829',
-    linkLabel: 'arXiv',
+      'Hendy N, Al-Hourani A, Pokhrel SR, Satish D, Sithamparanathan K, Kua J. Enabling coexistence: Dynamic channel allocation for scalable LEO-GEO networks. In: 2025 IEEE International Conference on Communication, Networks and Satellite (COMNETSAT). 2025:144–150. IEEE.',
+    link: 'https://ieeexplore.ieee.org/document/11325050',
+    linkLabel: 'IEEE Xplore',
     abstract:
-      'Presents correlated knowledge distillation methods for radio-based human pose monitoring, complementing the IEEE Sensors Journal work on RF-sensing and CKD for posture estimation.',
-  },
-  {
-    citation:
-      'Pokhrel SR, Kua J, Satish D, Williams P, Zaslavsky A, Loke SW, Choi J. Deakin RF-sensing: Experiments on correlated knowledge distillation for monitoring human postures with radios. IEEE Sensors Journal. 2023;23(22):28399–28410. IEEE.',
-    link: 'https://doi.org/10.1109/JSEN.2023.3320131',
-    linkLabel: 'DOI',
-    abstract:
-      'This paper explores the use of RF sensing technology together with Correlated Knowledge Distillation (CKD) theory for real-time human posture monitoring. Teacher and student models were built using a fully Convolutional Neural Network with ResNet architecture, demonstrating the feasibility of radio-based pose estimation and knowledge distillation for lightweight deployment.',
+      'Addresses dynamic channel allocation to enable coexistence between Low Earth Orbit (LEO) and Geostationary (GEO) satellite networks, supporting scalable and efficient use of spectrum.',
   },
   {
     citation:
@@ -46,6 +30,22 @@ const publications = [
     linkLabel: 'DOI',
     abstract:
       'DDPG-MPCC combines Deep Deterministic Policy Gradient (DDPG) with online convex optimisation to optimise fairness and performance in challenging multipath internet congestion control scenarios. The approach was evaluated through Linux kernel implementation and automated Bash testing scripts, with performance compared against state-of-the-art MPTCP solutions. The work was supported by Comcast Corporation.',
+  },
+  {
+    citation:
+      'Pokhrel SR, Kua J, Satish D, Williams P, Zaslavsky A, Loke SW, Choi J. Deakin RF-sensing: Experiments on correlated knowledge distillation for monitoring human postures with radios. IEEE Sensors Journal. 2023;23(22):28399–28410. IEEE.',
+    link: 'https://doi.org/10.1109/JSEN.2023.3320131',
+    linkLabel: 'DOI',
+    abstract:
+      'This paper explores the use of RF sensing technology together with Correlated Knowledge Distillation (CKD) theory for real-time human posture monitoring. Teacher and student models were built using a fully Convolutional Neural Network with ResNet architecture, demonstrating the feasibility of radio-based pose estimation and knowledge distillation for lightweight deployment.',
+  },
+  {
+    citation:
+      'Pokhrel SR, Kua J, Satish D, Williams P, Zaslavsky A, Loke SW, Choi J. On correlated knowledge distillation for monitoring human pose with radios. arXiv e-prints. 2023; arXiv:2305.14829.',
+    link: 'https://arxiv.org/abs/2305.14829',
+    linkLabel: 'arXiv',
+    abstract:
+      'Presents correlated knowledge distillation methods for radio-based human pose monitoring, complementing the IEEE Sensors Journal work on RF-sensing and CKD for posture estimation.',
   },
 ];
 

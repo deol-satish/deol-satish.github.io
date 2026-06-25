@@ -21,9 +21,10 @@ export default function Home() {
             />
             <h2 className="mt-4 text-xl font-bold text-zinc-900 dark:text-white">Deol Satish</h2>
             <p className="mt-1 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              Software Developer
+              Software Engineer
             </p>
             <p className="text-sm text-zinc-500 dark:text-zinc-500">@ITMagnet</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-500">Sydney, NSW, Australia</p>
 
             {/* Resume - above Contact me */}
             <section className="mt-8 w-full border-t border-zinc-200 pt-6 dark:border-zinc-700">
@@ -102,7 +103,7 @@ export default function Home() {
           <section className="space-y-2 py-6">
             <ul className="list-disc space-y-1 pl-5 text-zinc-700 dark:text-zinc-300">
               <li>
-              Versatile Software Engineer Honours graduate with a strong foundation in AI/ML development, Web Development and Cybersecurity. Published research papers with Comcast and Amazon demonstrating innovation in optimising network performance using advanced algorithms and machine learning.
+              Versatile Software Engineer with a strong foundation in AI/ML development, web development, and cybersecurity. Author of peer-reviewed research with Comcast and Amazon, demonstrating innovation in optimising network performance using advanced algorithms and machine learning.
               </li>
             </ul>
           </section>
@@ -114,13 +115,30 @@ export default function Home() {
               About me
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-zinc-700 dark:text-zinc-300">
-              <li><strong>Programming Languages:</strong> C, C#, Python, Bash, Java, JavaScript, TypeScript.</li>
-              <li><strong>Machine Learning &amp; Data Science:</strong> Large-Language Models, Hugging Face, Scikit-learn, TensorFlow, PyTorch, OpenAI Gym, OpenCV, Spark, Hadoop, Statistics, data wrangling, Data Analytics (TimeSeries, ARIMA).</li>
-              <li><strong>Security:</strong> Vulnerability Scanning, Risk Assessment and Mitigation, Network Protocols—TCP/IP &amp; AQM, Network Traffic Monitoring, Patching and Fixes, Kernel Programming.</li>
-              <li><strong>Web Development:</strong> .NET 10 (Backend), Node.js (Express), Frontend (Angular/React), Spring Boot, Maven, Apache Server, REST API, HTML.</li>
-              <li><strong>Tools &amp; Platform:</strong> Git, AWS (EC2), Java Android Development.</li>
+              <li><strong>Languages:</strong> C, C#, Python, Bash, Java, JavaScript, TypeScript.</li>
+              <li><strong>AI / ML &amp; Data Science:</strong> Large-Language Models, Hugging Face, scikit-learn, TensorFlow, PyTorch, OpenAI Gym, OpenCV, Spark, Hadoop, Statistics, Data Wrangling, Time-Series (ARIMA).</li>
+              <li><strong>Web &amp; Backend:</strong> .NET 10, Node.js (Express), Angular, React, Spring Boot, Maven, REST APIs, Apache Server, HTML.</li>
+              <li><strong>Cloud &amp; DevOps:</strong> Microsoft Azure, AWS (EC2), Git, Docker.</li>
+              <li><strong>Security:</strong> Vulnerability Scanning, Risk Assessment &amp; Mitigation, Network Protocols—TCP/IP &amp; AQM, Network Traffic Monitoring, Patching, Kernel Programming.</li>
               <li><strong>Interests:</strong> Books, Chess, LeetCode, Cybersecurity, Science, Astronomy, Physics &amp; Math, Teaching, Mentoring; hiking, cycling, soccer, meditation, table tennis.</li>
             </ul>
+          </section>
+
+          <hr className="my-6 border-zinc-300 dark:border-zinc-600" />
+
+          <section className="py-6">
+            <h3 className="text-sm font-bold uppercase tracking-wide text-black dark:text-white">
+              Education
+            </h3>
+            <div className="mt-2 text-zinc-700 dark:text-zinc-300">
+              <p className="font-medium text-zinc-900 dark:text-white">
+                B.E. (Honours), Software Engineering — First Class Honours
+              </p>
+              <p className="text-sm">
+                Deakin University · Melbourne, Victoria
+                <span className="text-zinc-500 dark:text-zinc-500"> · 2019 – 2023</span>
+              </p>
+            </div>
           </section>
 
           <hr className="my-6 border-zinc-300 dark:border-zinc-600" />

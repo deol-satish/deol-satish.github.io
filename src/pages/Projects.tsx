@@ -37,8 +37,8 @@ const projects: { title: string; description: string; links: ProjectLink[] }[] =
   {
     title: 'Distilling Large Language Models for Network Active Queue Management',
     description:
-      'Explores distilling Large Language Models for network Active Queue Management (AQM), extending the L4S-LLM research direction toward efficient deployment of ML-based congestion control. arXiv preprint (2025).',
-    links: [{ url: 'https://arxiv.org/abs/2501.16734', label: 'Paper' }],
+      'Explores distilling Large Language Models for network Active Queue Management (AQM), extending the L4S-LLM research direction toward efficient deployment of ML-based congestion control. Published in IEEE Transactions on Networking (2026).',
+    links: [{ url: 'https://doi.org/10.1109/TON.2026.3690076', label: 'Paper' }],
   },
   {
     title: 'Enabling Coexistence: Dynamic Channel Allocation for Scalable LEO-GEO Networks',
